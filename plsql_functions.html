@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL/SQL Functions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PL/SQL Functions</h1>
+
+    <h2>Create a Function</h2>
+    <p>A function is created using the CREATE FUNCTION statement.</p>
+    <pre>
+      CREATE OR REPLACE FUNCTION get_employee_name(emp_id NUMBER)
+      RETURN VARCHAR2
+      IS
+        emp_name VARCHAR2(100);
+      BEGIN
+        SELECT first_name INTO emp_name FROM employees WHERE employee_id = emp_id;
+        RETURN emp_name;
+      END;
+    </pre>
+
+    <h2>Function Calling</h2>
+    <p>A function can be called from other PL/SQL blocks or functions.</p>
+    <pre>
+      DECLARE
+        emp_id NUMBER := 100;
+        emp_full_name VARCHAR2(200);
+      BEGIN
+        emp_full_name := get_employee_name(emp_id);
+        DBMS_OUTPUT.PUT_LINE('Employee Full Name: ' || emp_full_name);
+      END;
+    </pre>
+
+    <h2>Recursive Function</h2>
+    <p>A recursive function calls itself either directly or indirectly.</p>
+    <pre>
+      CREATE OR REPLACE FUNCTION factorial(n NUMBER)
+      RETURN NUMBER
+      IS
+      BEGIN
+        IF n = 0 THEN
+          RETURN 1;
+        ELSE
+          RETURN n * factorial(n - 1);
+        END IF;
+      END;
+    </pre>
+
+    <h2>Drop a Function</h2>
+    <p>A function can be dropped from the database using the DROP FUNCTION statement.</p>
+    <pre>
+      DROP FUNCTION get_employee_name;
+    </pre>
+  </div>
+</body>
+</html>

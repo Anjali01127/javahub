@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySQL Statements</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MySQL Statements</h1>
+
+    <h2>CREATE DATABASE Statement</h2>
+    <p>The CREATE DATABASE statement is used to create a new database in MySQL.</p>
+    <pre>
+      CREATE DATABASE mydatabase;
+    </pre>
+
+    <h2>DROP DATABASE Statement</h2>
+    <p>The DROP DATABASE statement is used to delete an existing database in MySQL.</p>
+    <pre>
+      DROP DATABASE mydatabase;
+    </pre>
+
+    <h2>CREATE TABLE Statement</h2>
+    <p>The CREATE TABLE statement is used to create a new table in MySQL.</p>
+    <pre>
+      CREATE TABLE users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) NOT NULL,
+        email VARCHAR(100) NOT NULL
+      );
+    </pre>
+
+    <h2>DROP TABLE Statement</h2>
+    <p>The DROP TABLE statement is used to delete an existing table in MySQL.</p>
+    <pre>
+      DROP TABLE users;
+    </pre>
+
+    <h2>TRUNCATE TABLE Statement</h2>
+    <p>The TRUNCATE TABLE statement is used to remove all records from a table, but the table structure remains intact.</p>
+    <pre>
+      TRUNCATE TABLE users;
+    </pre>
+
+    <h2>ALTER TABLE Statement</h2>
+    <p>The ALTER TABLE statement is used to modify an existing table in MySQL, including adding, dropping, or modifying columns.</p>
+    <pre>
+      ALTER TABLE users ADD COLUMN age INT;
+    </pre>
+
+    <h2>INSERT INTO Statement</h2>
+    <p>The INSERT INTO statement is used to add new records into a table in MySQL.</p>
+    <pre>
+      INSERT INTO users (username, email) VALUES ('john_doe', 'john@example.com');
+    </pre>
+
+    <h2>SELECT Statement</h2>
+    <p>The SELECT statement is used to retrieve data from one or more tables in MySQL.</p>
+    <pre>
+      SELECT * FROM users WHERE age &gt; 18;
+    </pre>
+
+    <h2>UPDATE Statement</h2>
+    <p>The UPDATE statement is used to modify existing records in a table in MySQL.</p>
+    <pre>
+      UPDATE users SET age = 30 WHERE id = 1;
+    </pre>
+
+    <h2>DELETE Statement</h2>
+    <p>The DELETE statement is used to remove existing records from a table in MySQL.</p>
+    <pre>
+      DELETE FROM users WHERE id = 1;
+    </pre>
+
+    <h2>GROUP BY Statement</h2>
+    <p>The GROUP BY statement is used to group rows that have the same values into summary rows in MySQL.</p>
+    <pre>
+      SELECT department, COUNT(*) FROM employees GROUP BY department;
+    </pre>
+
+    <h2>CASE Statement</h2>
+    <p>The CASE statement is used to create conditional logic in SQL queries in MySQL.</p>
+    <pre>
+      SELECT
+        CASE 
+          WHEN age < 18 THEN 'Child'
+          WHEN age >= 18 AND age < 65 THEN 'Adult'
+          ELSE 'Senior'
+        END AS age_group
+      FROM users;
+    </pre>
+
+    <h2>CREATE INDEX Statement</h2>
+    <p>The CREATE INDEX statement is used to create an index on a table in MySQL, which improves query performance.</p>
+    <pre>
+      CREATE INDEX idx_username ON users (username);
+    </pre>
+
+    <h2>CREATE VIEW Statement</h2>
+    <p>The CREATE VIEW statement is used to create a virtual table based on the result of a SELECT query in MySQL.</p>
+    <pre>
+      CREATE VIEW active_users AS SELECT * FROM users WHERE status = 'active';
+    </pre>
+
+    <h2>Alias</h2>
+    <p>An alias is a temporary name assigned to a table or column in MySQL, which is used to make column names more readable or to rename tables.</p>
+    <pre>
+      SELECT username AS 'User', email AS 'Email' FROM users;
+    </pre>
+
+  </div>
+</body>
+</html>

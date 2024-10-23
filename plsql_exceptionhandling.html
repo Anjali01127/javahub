@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL/SQL Exception Handling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PL/SQL Exception Handling</h1>
+    <p>An error occurs during the program execution is called Exception in PL/SQL. PL/SQL facilitates programmers to catch such conditions using exception block in the program and an appropriate action is taken against the error condition.
+        There are two type of exceptions:
+        <li>System-defined Exceptions</li>
+            
+        <li>User-defined Exceptions</li>
+
+        </p>
+
+    <h2>Syntax for Exception Handling</h2>
+    <p>Exceptions are handled using the EXCEPTION block within a PL/SQL block.</p>
+    <pre>
+      BEGIN
+        -- statements
+      EXCEPTION
+        WHEN exception_name1 THEN
+          -- exception handling code
+        WHEN exception_name2 THEN
+          -- exception handling code
+        ...
+        WHEN OTHERS THEN
+          -- default exception handling code
+      END;
+    </pre>
+
+    <h2>Example Program</h2>
+    <p>Here's an example program demonstrating exception handling in PL/SQL.</p>
+    <pre>
+      BEGIN
+        INSERT INTO employees (employee_id, first_name, last_name)
+        VALUES (101, 'John', 'Doe');
+      EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+          DBMS_OUTPUT.PUT_LINE('Employee with the same ID already exists.');
+      END;
+    </pre>
+
+    <h2>Raising Exceptions</h2>
+    <p>Exceptions can be raised explicitly using the RAISE statement.</p>
+    <pre>
+      DECLARE
+        invalid_input EXCEPTION;
+      BEGIN
+        IF input_value < 0 THEN
+          RAISE invalid_input;
+        END IF;
+      EXCEPTION
+        WHEN invalid_input THEN
+          DBMS_OUTPUT.PUT_LINE('Invalid input value.');
+      END;
+    </pre>
+  </div>
+</body>
+</html>

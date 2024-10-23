@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL/SQL Procedures</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PL/SQL Procedures</h1>
+
+    <h2>CREATE PROCEDURE</h2>
+    <p>The CREATE PROCEDURE statement is used to create a new stored procedure in the database.</p>
+    <pre>
+      CREATE OR REPLACE PROCEDURE get_employee_details
+      IS
+      BEGIN
+        -- procedure body
+      END get_employee_details;
+    </pre>
+
+    <h2>PASS PARAMETERS IN PROCEDURES</h2>
+    <p>When you want to create a procedure or function, you have to define parameters .There is three ways to pass parameters in procedure:
+       <li>IN parameters: The IN parameter can be referenced by the procedure or function. The value of the parameter cannot be overwritten by the procedure or the function.</li>
+       <li>OUT parameters: The OUT parameter cannot be referenced by the procedure or function, but the value of the parameter can be overwritten by the procedure or function.</li>
+       <li>INOUT parameters: The INOUT parameter can be referenced by the procedure or function and the value of the parameter can be overwritten by the procedure or function.</li>
+    </p>
+    <pre>
+      CREATE OR REPLACE PROCEDURE get_employee_details(emp_id NUMBER)
+      IS
+      BEGIN
+        -- procedure body using emp_id parameter
+      END get_employee_details;
+    </pre>
+
+    <h2>PROGRAM TO CALL PROCEDURE</h2>
+    <p>Procedures can be called from PL/SQL blocks or other procedures.</p>
+    <pre>
+      DECLARE
+        emp_id NUMBER := 1001;
+      BEGIN
+        get_employee_details(emp_id);
+      END;
+    </pre>
+
+    <h2>DROP PROCEDURE</h2>
+    <p>The DROP PROCEDURE statement is used to remove a stored procedure from the database.</p>
+    <pre>
+      DROP PROCEDURE get_employee_details;
+    </pre>
+  </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f7f7f7, #ffffff); /* Gradient background */
+    color: #333; /* Dark text color */
+  }
+  
+  header {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    color: #333; /* Dark text color */
+    padding: 20px;
+    text-align: center; /* Center align the text */
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #333; /* Dark text color */
+    text-decoration: none;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-top: 40px;
+  }
+  
+  .topic {
+    margin-bottom: 20px;
+  }
+  
+  footer {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    color: #333; /* Dark text color */
+    padding: 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  footer div {
+    flex: 1;
+    margin-right: 20px;
+  }
+  .topic {
+    margin-bottom: 20px; /* Add space between topics */
+  }
+  
+  .topic h3 {
+    font-size: 20px; /* Set font size for topic headings */
+    margin-bottom: 5px; /* Add space below topic headings */
+  }
+  
+  .topic h3 a {
+    color: #007bff; /* Set color for topic links */
+    text-decoration: none; /* Remove underline from topic links */
+  }
+  
+  .topic h3 a:hover {
+    text-decoration: underline; /* Add underline on hover for topic links */
+  }
+  
+  .topic p {
+    margin-top: 5px; /* Add space above topic paragraphs */
+    color: #666; /* Set color for topic paragraphs */
+  }
+  

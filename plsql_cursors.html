@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL/SQL Cursors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PL/SQL Cursors</h1>
+    <p> <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>PL/SQL Cursors</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              text-align: center;
+              margin: 0;
+              padding: 0;
+            }
+        
+            .container {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+        
+            h1 {
+              margin-top: 20px;
+            }
+        
+            h2 {
+              margin-top: 30px;
+            }
+        
+            p {
+              margin-bottom: 20px;
+            }
+        
+            pre {
+              background-color: #f5f5f5;
+              padding: 10px;
+              border-radius: 5px;
+              margin-bottom: 20px;
+              text-align: left;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <p>When an SQL statement is processed, Oracle creates a memory area known as context area. A cursor is a pointer to this context area. It contains all information needed for processing the statement. In PL/SQL, the context area is controlled by Cursor. A cursor contains information on a select statement and the rows of data accessed by it.
+                A cursor is used to referred to a program to fetch and process the rows returned by the SQL statement, one at a time. There are two types of cursors:
+                <li>Implicit Cursors</li>
+                <li>Explicit Cursors</li>
+            </p>
+       
+
+    <h2>Implicit Cursors</h2>
+    <p>Implicit cursors are automatically created by PL/SQL for SQL statements like SELECT INTO or FOR loops.</p>
+    <pre>
+      DECLARE
+        emp_name employees.first_name%TYPE;
+        emp_salary employees.salary%TYPE;
+      BEGIN
+        SELECT first_name, salary INTO emp_name, emp_salary FROM employees WHERE employee_id = 100;
+        DBMS_OUTPUT.PUT_LINE('Employee Name: ' || emp_name || ', Salary: ' || emp_salary);
+      END;
+    </pre>
+
+    <h2>Explicit Cursors</h2>
+    <p>Explicit cursors are declared and managed by the programmer using the DECLARE, OPEN, FETCH, and CLOSE statements.</p>
+    <pre>
+      DECLARE
+        CURSOR emp_cursor IS
+          SELECT first_name, salary FROM employees WHERE department_id = 10;
+        emp_rec employees%ROWTYPE;
+      BEGIN
+        OPEN emp_cursor;
+        LOOP
+          FETCH emp_cursor INTO emp_rec;
+          EXIT WHEN emp_cursor%NOTFOUND;
+          DBMS_OUTPUT.PUT_LINE('Employee Name: ' || emp_rec.first_name || ', Salary: ' || emp_rec.salary);
+        END LOOP;
+        CLOSE emp_cursor;
+      END;
+    </pre>
+  </div>
+</body>
+</html>

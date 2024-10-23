@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL/SQL Triggers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PL/SQL Triggers</h1>
+    <p>Trigger is invoked by Oracle engine automatically whenever a specified event occurs.Trigger is stored into database and invoked repeatedly, when specific condition match.
+        Triggers are stored programs, which are automatically executed or fired when some event occurs.
+        Triggers are written to be executed in response to any of the following events.
+        <li>A database manipulation (DML) statement (DELETE, INSERT, or UPDATE).</li>
+        <li>A database definition (DDL) statement (CREATE, ALTER, or DROP).</li>
+        <li>A database operation (SERVERERROR, LOGON, LOGOFF, STARTUP, or SHUTDOWN).</li></p>
+
+
+    <h2>Creating a Trigger</h2>
+    <p>A trigger is a PL/SQL block that is automatically executed in response to certain events on a table.</p>
+    <pre>
+      CREATE OR REPLACE TRIGGER employee_audit_trigger
+      BEFORE INSERT OR UPDATE OR DELETE ON employees
+      FOR EACH ROW
+      BEGIN
+        IF INSERTING THEN
+          INSERT INTO audit_log VALUES ('New employee added');
+        ELSIF UPDATING THEN
+          INSERT INTO audit_log VALUES ('Employee details updated');
+        ELSIF DELETING THEN
+          INSERT INTO audit_log VALUES ('Employee deleted');
+        END IF;
+      END;
+    </pre>
+
+    <h2>Example to Demonstrate</h2>
+    <p>Here's an example of trigger to audit employee changes in a table.</p>
+    <pre>
+      CREATE TABLE audit_log (
+        log_id NUMBER PRIMARY KEY,
+        log_message VARCHAR2(100),
+        log_date DATE DEFAULT SYSDATE
+      );
+
+      CREATE OR REPLACE TRIGGER employee_audit_trigger
+      BEFORE INSERT OR UPDATE OR DELETE ON employees
+      FOR EACH ROW
+      BEGIN
+        IF INSERTING THEN
+          INSERT INTO audit_log (log_message) VALUES ('New employee added');
+        ELSIF UPDATING THEN
+          INSERT INTO audit_log (log_message) VALUES ('Employee details updated');
+        ELSIF DELETING THEN
+          INSERT INTO audit_log (log_message) VALUES ('Employee deleted');
+        END IF;
+      END;
+    </pre>
+  </div>
+</body>
+</html>

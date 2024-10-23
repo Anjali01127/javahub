@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLAUSES</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CLAUSES</h1>
+
+    <h2>WHERE Clause</h2>
+    <p>The WHERE clause is used to filter records based on specified conditions.</p>
+    <pre>
+      SELECT * FROM users WHERE age &gt; 18;
+    </pre>
+
+    <h2>LIMIT Clause</h2>
+    <p>The LIMIT clause is used to limit the number of records returned in a query result.</p>
+    <pre>
+      SELECT * FROM products LIMIT 5;
+    </pre>
+
+    <h2>HAVING Clause</h2>
+    <p>The HAVING clause is used to filter the results of aggregate functions applied to grouped data.</p>
+    <pre>
+      SELECT category, AVG(price) AS average_price FROM products GROUP BY category HAVING AVG(price) &gt; 100;
+    </pre>
+
+    <h2>ORDER BY Clause</h2>
+    <p>The ORDER BY clause is used to sort the result set in ascending or descending order.</p>
+    <pre>
+      SELECT * FROM products ORDER BY price DESC;
+    </pre>
+
+    <h2>JOIN Clause</h2>
+    <p>The JOIN clause is used to combine rows from two or more tables based on a related column between them.</p>
+    <pre>
+      SELECT orders.order_id, customers.name FROM orders JOIN customers ON orders.customer_id = customers.customer_id;
+    </pre>
+  </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL/SQL Variables</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PL/SQL Variables</h1>
+
+    <h2>Variable Declaration</h2>
+    <p>Variables are declared using the DECLARE keyword. They hold data values that can be manipulated during the execution of a PL/SQL block.</p>
+    <pre>
+      DECLARE
+        employee_name VARCHAR2(50);
+        employee_salary NUMBER;
+      BEGIN
+        -- statements
+      END;
+    </pre>
+
+    <h2>Constant Declaration</h2>
+    <p>Constants are declared using the CONSTANT keyword. They hold values that cannot be changed during the execution of a PL/SQL block.</p>
+    <pre>
+      DECLARE
+        PI CONSTANT NUMBER := 3.14159;
+      BEGIN
+        -- statements
+      END;
+    </pre>
+
+    <h2>Variable Attributes</h2>
+    <p>PL/SQL variables can have various attributes like data type declaration, row type, and initialization.</p>
+    <pre>
+      DECLARE
+        emp_record employees%ROWTYPE;
+        total_sales NUMBER(10,2) := 0;
+      BEGIN
+        -- statements
+      END;
+    </pre>
+
+    <h2>Nested Blocks</h2>
+    <p>PL/SQL allows nesting of blocks within blocks. Inner blocks can access variables declared in outer blocks.</p>
+    <pre>
+      DECLARE
+        outer_variable NUMBER := 10;
+      BEGIN
+        DECLARE
+          inner_variable NUMBER := 20;
+        BEGIN
+          -- statements
+        END;
+      END;
+    </pre>
+  </div>
+</body>
+</html>

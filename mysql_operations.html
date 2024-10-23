@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Operators</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-top: 20px;
+        }
+        
+        h2 {
+            margin-top: 30px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>OPERATORS</h1>
+
+
+        <h2>AND Operator</h2>
+        <p>The AND operator is used to combine multiple conditions in a WHERE clause, and all conditions must be true for the row to be included in the result set.</p>
+        <pre>
+      SELECT * FROM employees WHERE age &gt; 30 AND department = 'HR';
+    </pre>
+
+        <h2>OR Operator</h2>
+        <p>The OR operator is used to combine multiple conditions in a WHERE clause, and at least one condition must be true for the row to be included in the result set.</p>
+        <pre>
+      SELECT * FROM products WHERE category = 'Electronics' OR category = 'Appliances';
+    </pre>
+
+        <h2>NOT Operator</h2>
+        <p>The NOT operator is used to negate a condition in a WHERE clause, returning rows that do not meet the specified condition.</p>
+        <pre>
+      SELECT * FROM customers WHERE NOT age &gt; 21;
+    </pre>
+
+        <h2>IS NULL Operator</h2>
+        <p>The IS NULL operator is used to check if a column contains a NULL value.</p>
+        <pre>
+      SELECT * FROM orders WHERE shipping_address IS NULL;
+    </pre>
+
+        <h2>IS NOT NULL Operator</h2>
+        <p>The IS NOT NULL operator is used to check if a column does not contain a NULL value.</p>
+        <pre>
+      SELECT * FROM employees WHERE email IS NOT NULL;
+    </pre>
+
+        <h2>LIKE Operator</h2>
+        <p>The LIKE operator is used to search for a specified pattern in a column.</p>
+        <pre>
+      SELECT * FROM products WHERE product_name LIKE 'Apple%';
+    </pre>
+
+        <h2>IN Operator</h2>
+        <p>The IN operator is used to specify multiple values in a WHERE clause.</p>
+        <pre>
+      SELECT * FROM customers WHERE country IN ('USA', 'Canada', 'UK');
+    </pre>
+
+        <h2>BETWEEN Operator</h2>
+        <p>The BETWEEN operator is used to select values within a specified range.</p>
+        <pre>
+      SELECT * FROM orders WHERE order_date BETWEEN '2022-01-01' AND '2022-12-31';
+    </pre>
+
+        <h2>UNION Operator</h2>
+        <p>The UNION operator is used to combine the result sets of two or more SELECT statements.</p>
+        <pre>
+      SELECT product_name FROM products WHERE category = 'Electronics'
+      UNION
+      SELECT product_name FROM products WHERE category = 'Appliances';
+    </pre>
+
+        <h2>EXISTS Operator</h2>
+        <p>The EXISTS operator is used to test for the existence of any rows in a subquery.</p>
+        <pre>
+      SELECT * FROM orders WHERE EXISTS (SELECT * FROM customers WHERE customers.customer_id = orders.customer_id);
+    </pre>
+
+        <h2>ANY Operator</h2>
+        <p>The ANY operator is used to compare a value to any value in a list or returned by a subquery.</p>
+        <pre>
+      SELECT * FROM products WHERE price &gt; ANY (SELECT price FROM competitors);
+    </pre>
+
+        <h2>ALL Operator</h2>
+        <p>The ALL operator is used to compare a value to every value in a list or returned by a subquery.</p>
+        <pre>
+      SELECT * FROM products WHERE price &gt; ALL (SELECT price FROM competitors);
+    </pre>
+
+    </div>
+</body>
+
+</html>

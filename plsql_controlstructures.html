@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL/SQL Control Structures</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PL/SQL Control Structures</h1>
+
+    <h2>IF THEN Statement</h2>
+    <p>The IF THEN statement executes a block of code if a condition is true.</p>
+    <pre>
+      IF condition THEN
+        -- statements
+      END IF;
+    </pre>
+
+    <h2>IF THEN ELSE Statement</h2>
+    <p>The IF THEN ELSE statement executes one block of code if a condition is true and another block if it is false.</p>
+    <pre>
+      IF condition THEN
+        -- statements
+      ELSE
+        -- statements
+      END IF;
+    </pre>
+
+    <h2>IF THEN ELSE IF Statement</h2>
+    <p>The IF THEN ELSE IF statement executes different blocks of code based on multiple conditions.</p>
+    <pre>
+      IF condition1 THEN
+        -- statements
+      ELSIF condition2 THEN
+        -- statements
+      ELSE
+        -- statements
+      END IF;
+    </pre>
+
+    <h2>EXIT Loop Statement</h2>
+    <p>The EXIT WHEN statement is used to exit a loop based on a condition.</p>
+    <pre>
+      LOOP
+        -- statements
+        EXIT WHEN condition;
+        -- more statements
+      END LOOP;
+    </pre>
+
+    <h2>WHILE Loop Statement</h2>
+    <p>The WHILE LOOP statement executes a block of code repeatedly while a condition is true.</p>
+    <pre>
+      WHILE condition LOOP
+        -- statements
+      END LOOP;
+    </pre>
+
+    <h2>FOR Loop Statement (Reverse)</h2>
+    <p>The FOR LOOP statement executes a block of code a specified number of times, using the REVERSE keyword to iterate in reverse order.</p>
+    <pre>
+      FOR i IN REVERSE lower_bound..upper_bound LOOP
+        -- statements
+      END LOOP;
+    </pre>
+
+    <h2>GOTO Statement</h2>
+    <p>The GOTO statement transfers control to a labeled statement in the same block.</p>
+    <pre>
+      <<label_name>>
+      GOTO label_name;
+    </pre>
+  </div>
+</body>
+</html>
