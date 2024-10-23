@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Practice - Interfaces</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Assuming styles.css is used for styling -->
+
+</head>
+
+<body>
+    <header>
+        <div class="content">
+
+            <h2>Java Practice - Interfaces</h2>
+    </header>
+    <main>
+        <div class="question">
+
+
+            <h4>1. Write a Java program to create an interface Shape with the getArea() method.</h4>
+            <pre><code>
+interface Shape {
+    double getArea();
+}
+
+class Rectangle implements Shape {
+    double width, height;
+
+    Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public double getArea() {
+        return width * height;
+    }
+}
+
+class Circle implements Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Triangle implements Shape {
+    double base, height;
+
+    Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    public double getArea() {
+        return 0.5 * base * height;
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>2. Write a Java program to create an Animal interface with a method called bark().</h4>
+            <pre><code>
+interface Animal {
+    void bark();
+}
+
+class Dog implements Animal {
+    public void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>3. Write a Java program to create an interface Flyable with a method called fly_obj().</h4>
+            <pre><code>
+interface Flyable {
+    void fly_obj();
+}
+
+class Spacecraft implements Flyable {
+    public void fly_obj() {
+        System.out.println("Spacecraft is flying in space.");
+    }
+}
+
+class Airplane implements Flyable {
+    public void fly_obj() {
+        System.out.println("Airplane is flying in the sky.");
+    }
+}
+
+class Helicopter implements Flyable {
+    public void fly_obj() {
+        System.out.println("Helicopter is flying in the air.");
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>4. Write a Java program to create a banking system with an interface Account.</h4>
+            <pre><code>
+interface Account {
+    void deposit(double amount);
+    void withdraw(double amount);
+    double calculateInterest();
+    double viewBalance();
+}
+
+class SavingsAccount implements Account {
+    private double balance;
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    public double calculateInterest() {
+        return balance * 0.04; // Example interest rate
+    }
+
+    public double viewBalance() {
+        return balance;
+    }
+}
+
+class CurrentAccount implements Account {
+    private double balance;
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    public double calculateInterest() {
+        return 0; // Current accounts typically do not earn interest
+    }
+
+    public double viewBalance() {
+        return balance;
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>5. Write a Java program to create an interface Resizable.</h4>
+            <pre><code>
+interface Resizable {
+    void resizeWidth(int width);
+    void resizeHeight(int height);
+}
+
+class Rectangle implements Resizable {
+    private int width, height;
+
+    public void resizeWidth(int width) {
+        this.width = width;
+    }
+
+    public void resizeHeight(int height) {
+        this.height = height;
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>6. Write a Java program to create an interface Drawable.</h4>
+            <pre><code>
+interface Drawable {
+    void draw();
+}
+
+class Circle implements Drawable {
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Rectangle implements Drawable {
+    public void draw() {
+        System.out.println("Drawing Rectangle");
+    }
+}
+
+class Triangle implements Drawable {
+    public void draw() {
+        System.out.println("Drawing Triangle");
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>7. Write a Java program to create an interface Sortable.</h4>
+            <pre><code>
+interface Sortable {
+    void sort(int[] array);
+}
+
+class BubbleSort implements Sortable {
+    public void sort(int[] array) {
+        // Bubble sort implementation
+        int n = array.length;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (array[j] > array[j+1]) {
+                    // swap array[j] and array[j+1]
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
+    }
+}
+
+class SelectionSort implements Sortable {
+    public void sort(int[] array) {
+        // Selection sort implementation
+        int n = array.length;
+        for (int i = 0; i < n-1; i++) {
+            int minIdx = i;
+            for (int j = i+1; j < n; j++) {
+                if (array[j] < array[minIdx]) {
+                    minIdx = j;
+                }
+            }
+            // Swap the found minimum element with the first element
+            int temp = array[minIdx];
+            array[minIdx] = array[i];
+            array[i] = temp;
+        }
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>8. Write a Java program to create an interface Playable.</h4>
+            <pre><code>
+interface Playable {
+    void play();
+}
+
+class Football implements Playable {
+    public void play() {
+        System.out.println("Playing Football");
+    }
+}
+
+class Volleyball implements Playable {
+    public void play() {
+        System.out.println("Playing Volleyball");
+    }
+}
+
+class Basketball implements Playable {
+    public void play() {
+        System.out.println("Playing Basketball");
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>9. Write a Java program to create an interface Searchable.</h4>
+            <pre><code>
+interface Searchable {
+    void search(String keyword);
+}
+
+class Document implements Searchable {
+    public void search(String keyword) {
+        System.out.println("Searching for " + keyword + " in document.");
+    }
+}
+
+class WebPage implements Searchable {
+    public void search(String keyword) {
+        System.out.println("Searching for " + keyword + " in web page.");
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>10. Write a Java program to create an interface Encryptable.</h4>
+            <pre><code>
+interface Encryptable {
+    String encrypt(String data);
+    String decrypt(String encryptedData);
+}
+
+class AES implements Encryptable {
+    public String encrypt(String data) {
+        return "Encrypted with AES: " + data;
+    }
+
+    public String decrypt(String encryptedData) {
+        return "Decrypted with AES: " + encryptedData;
+    }
+}
+
+class RSA implements Encryptable {
+    public String encrypt(String data) {
+        return "Encrypted with RSA: " + data;
+    }
+
+    public String decrypt(String encryptedData) {
+        return "Decrypted with RSA: " + encryptedData;
+    }
+}
+            </code></pre>
+        </div>
+
+        <div>
+            <h4>11. Write a Java program to create an interface Sortable with descending order.</h4>
+            <pre><code>
+interface Sortable {
+    void sort(int[] array);
+}
+
+class QuickSort implements Sortable {
+    public void sort(int[] array) {
+        // Quick sort implementation for descending order
+        quickSort(array, 0, array.length - 1);
+    }
+
+    private void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int pi = partition(array, low, high);
+            quickSort(array, low, pi - 1);
+            quickSort(array, pi + 1, high);
+        }
+    }
+
+   
+        private int partition(int[] array, int low, int high) {
+            int pivot = array[high];
+            int i = (low - 1);
+            for (int j = low; j < high; j++) {
+                if (array[j] > pivot) { // Change to '>' for descending order
+                    i++;
+                    // swap array[i] and array[j]
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            int temp = array[i + 1];
+            array[i + 1] = array[high];
+            array[high] = temp;
+            return i + 1;
+        }
+    }
+    
+    class MergeSort implements Sortable {
+        public void sort(int[] array) {
+            mergeSort(array, 0, array.length - 1);
+        }
+    
+        private void mergeSort(int[] array, int left, int right) {
+            if (left < right) {
+                int mid = (left + right) / 2;
+                mergeSort(array, left, mid);
+                mergeSort(array, mid + 1, right);
+                merge(array, left, mid, right);
+            }
+        }
+    
+        private void merge(int[] array, int left, int mid, int right) {
+            // Create temporary arrays
+            int n1 = mid - left + 1;
+            int n2 = right - mid;
+    
+            int[] L = new int[n1];
+            int[] R = new int[n2];
+    
+            for (int i = 0; i < n1; ++i)
+                L[i] = array[left + i];
+            for (int j = 0; j < n2; ++j)
+                R[j] = array[mid + 1 + j];
+    
+            // Merge the temporary arrays back into array[left..right]
+            int i = 0, j = 0;
+            int k = left;
+            while (i < n1 && j < n2) {
+                if (L[i] > R[j]) { // Change to '>' for descending order
+                    array[k] = L[i];
+                    i++;
+                } else {
+                    array[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+    
+            // Copy the remaining elements of L[], if any
+            while (i < n1) {
+                array[k] = L[i];
+                i++;
+                k++;
+            }
+    
+            // Copy the remaining elements of R[], if any
+            while (j < n2) {
+                array[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+    }
+                </code></pre>
+        </div>
+    </main>
+
+</body>
+
+</html>

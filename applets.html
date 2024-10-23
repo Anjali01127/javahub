@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applet Questions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="content">
+
+        <h2>Applet Programming Practice</h2>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <h4>1. Create an Applet showing the string "Hello World" which is embedded in the HTML page</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class HelloWorldApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawString("Hello World", 20, 20);
+    }
+}
+        </code></pre>
+            <!-- Compiler for Question 1 -->
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <h4>2. Create an Applet showing the string "Hello World" which is executed by an appletviewer</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class HelloWorldViewerApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawString("Hello World", 20, 20);
+    }
+}
+
+// To execute by appletviewer, use:
+// appletviewer HelloWorldViewerApplet.java
+        </code></pre>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <h4>3. Create an Applet in Java to draw a circle</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawCircleApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawOval(50, 50, 100, 100);  // Draw circle (oval with equal width and height)
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <h4>4. Create an Applet in Java to draw a polygon</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawPolygonApplet extends Applet {
+    public void paint(Graphics g) {
+        int[] xPoints = {50, 100, 150, 200, 250};
+        int[] yPoints = {50, 100, 50, 100, 50};
+        g.drawPolygon(xPoints, yPoints, 5);  // Draw polygon with 5 points
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <h4>5. Create an Applet in Java to draw a rectangle</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawRectangleApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawRect(50, 50, 200, 100);  // Draw rectangle
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <h4>6. Create an Applet in Java to draw a square</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawSquareApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawRect(50, 50, 100, 100);  // Draw square
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <h4>7. Create an Applet in Java to draw 4 concentric circles</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class ConcentricCirclesApplet extends Applet {
+    public void paint(Graphics g) {
+        for (int i = 0; i < 4; i++) {
+            g.drawOval(50 + i * 20, 50 + i * 20, 100 - i * 40, 100 - i * 40);
+        }
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+            <h4>8. Create an Applet in Java to draw a line</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawLineApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawLine(50, 50, 200, 200);  // Draw line from (50, 50) to (200, 200)
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <h4>9. Create an Applet in Java to draw an oval</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawOvalApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawOval(50, 50, 200, 100);  // Draw oval
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <h4>10. Create an Applet in Java to draw an arc</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawArcApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawArc(50, 50, 200, 100, 0, 180);  // Draw arc from 0 to 180 degrees
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question">
+            <h4>11. Create an Applet in Java to change the background color</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class BackgroundColorApplet extends Applet {
+    public void init() {
+        setBackground(Color.CYAN);  // Set background color to cyan
+    }
+
+    public void paint(Graphics g) {
+        g.drawString("Background color changed!", 20, 20);
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question">
+            <h4>12. Create an Applet in Java to draw a rounded rectangle</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class DrawRoundedRectApplet extends Applet {
+    public void paint(Graphics g) {
+        g.drawRoundRect(50, 50, 200, 100, 30, 30);  // Draw rounded rectangle
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question">
+            <h4>13. Create an Applet in Java to set font</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Font;
+import java.awt.Graphics;
+
+public class SetFontApplet extends Applet {
+    public void paint(Graphics g) {
+        Font font = new Font("Arial", Font.BOLD, 20);
+        g.setFont(font);
+        g.drawString("Font has been set!", 20, 50);
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question">
+            <h4>14. Create an Applet to display a digital clock</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Graphics;
+import java.util.Date;
+
+public class DigitalClockApplet extends Applet implements Runnable {
+    Thread t;
+    String time;
+
+    public void init() {
+        t = new Thread(this);
+        t.start();
+    }
+
+    public void run() {
+        while (true) {
+            time = new Date().toString();
+            repaint();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void paint(Graphics g) {
+        g.drawString(time, 50, 50);
+    }
+}
+        </code></pre>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question">
+            <h4>15. Java Program to Draw a Smiling Face using Graphics Class Methods</h4>
+            <pre><code>
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class SmilingFaceApplet extends Applet {
+    public void paint(Graphics g) {
+        // Face
+        g.setColor(Color.YELLOW);
+        g.fillOval(50, 50, 200, 200);
+        
+        // Eyes
+        g.setColor(Color.BLACK);
+        g.fillOval(90, 100, 30, 30);
+        g.fillOval(180, 100, 30, 30);
+        
+        // Smile
+        g.drawArc(100, 150, 100, 50, 0, -180);
+    }
+}
+        </code></pre>
+        </div>
+</body>
+
+</html>

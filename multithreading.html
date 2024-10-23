@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Multithreading Practice Questions</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <header>
+        <div class="content">
+            <h2>Multithreading Practice Questions</h2>
+
+
+    </header>
+    <main>
+        <div class="question">
+
+
+            <h3>1. Write a Java program to create a basic Java thread that prints "Hello, World!" when executed.</h3>
+            <pre><code>
+class HelloWorldThread extends Thread {
+    public void run() {
+        System.out.println("Hello, World!");
+    }
+
+    public static void main(String[] args) {
+        HelloWorldThread thread = new HelloWorldThread();
+        thread.start();
+    }
+}
+        </code></pre>
+
+            <h3>2. Write a Java program that creates two threads to find and print even and odd numbers from 1 to 20.</h3>
+            <pre><code>
+class EvenThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 20; i++) {
+            if (i % 2 == 0) {
+                System.out.println("Even: " + i);
+            }
+        }
+    }
+}
+
+class OddThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 20; i++) {
+            if (i % 2 != 0) {
+                System.out.println("Odd: " + i);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        EvenThread evenThread = new EvenThread();
+        OddThread oddThread = new OddThread();
+        evenThread.start();
+        oddThread.start();
+    }
+}
+        </code></pre>
+
+            <h3>3. Write a Java program that sorts an array of integers using multiple threads.</h3>
+            <pre><code>
+import java.util.Arrays;
+
+class SortThread extends Thread {
+    private int[] array;
+    private int start, end;
+
+    public SortThread(int[] array, int start, int end) {
+        this.array = array;
+        this.start = start;
+        this.end = end;
+    }
+
+    public void run() {
+        Arrays.sort(array, start, end);
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        int[] array = {5, 3, 8, 1, 2, 7, 4, 6};
+        SortThread thread1 = new SortThread(array, 0, 4);
+        SortThread thread2 = new SortThread(array, 4, 8);
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+        Arrays.sort(array); // Final sort
+        System.out.println("Sorted array: " + Arrays.toString(array));
+    }
+}
+        </code></pre>
+
+            <h3>4. Write a Java program that performs matrix multiplication using multiple threads.</h3>
+            <pre><code>
+class MatrixMultiplication extends Thread {
+    private int[][] a, b, result;
+    private int row;
+
+    public MatrixMultiplication(int[][] a, int[][] b, int[][] result, int row) {
+        this.a = a;
+        this.b = b;
+        this.result = result;
+        this.row = row;
+    }
+
+    public void run() {
+        for (int j = 0; j < b[0].length; j++) {
+            result[row][j] = 0;
+            for (int k = 0; k < a[0].length; k++) {
+                result[row][j] += a[row][k] * b[k][j];
+            }
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        int[][] a = {{1, 2, 3}, {4, 5, 6}};
+        int[][] b = {{7, 8}, {9, 10}, {11, 12}};
+        int[][] result = new int[a.length][b[0].length];
+
+        MatrixMultiplication[] threads = new MatrixMultiplication[a.length];
+        for (int i = 0; i < a.length; i++) {
+            threads[i] = new MatrixMultiplication(a, b, result, i);
+            threads[i].start();
+        }
+
+        for (MatrixMultiplication thread : threads) {
+            thread.join();
+        }
+
+        System.out.println("Resultant Matrix:");
+        for (int[] row : result) {
+            System.out.println(Arrays.toString(row));
+        }
+    }
+}
+        </code></pre>
+
+            <h3>5. Write a Java program that calculates the sum of all prime numbers up to a given limit using multiple threads.</h3>
+            <pre><code>
+class PrimeSumThread extends Thread {
+    private int start, end, sum = 0;
+
+    public PrimeSumThread(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    public void run() {
+        for (int i = start; i <= end; i++) {
+            if (isPrime(i)) {
+                sum += i;
+            }
+        }
+    }
+
+    public int getSum() {
+        return sum;
+    }
+
+    private boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        PrimeSumThread thread1 = new PrimeSumThread(1, 50);
+        PrimeSumThread thread2 = new PrimeSumThread(51, 100);
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+        int totalSum = thread1.getSum() + thread2.getSum();
+        System.out.println("Sum of prime numbers from 1 to 100: " + totalSum);
+    }
+}
+        </code></pre>
+
+            <h3>6. Write a Java program to implement a concurrent web crawler that crawls multiple websites simultaneously using threads.</h3>
+            <pre><code>
+import java.io.*;
+import java.net.*;
+
+class WebCrawlerThread extends Thread {
+    private String url;
+
+    public WebCrawlerThread(String url) {
+        this.url = url;
+    }
+
+    public void run() {
+        try {
+            URL website = new URL(url);
+            BufferedReader in = new BufferedReader(new InputStreamReader(website.openStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                System.out.println("Crawled from " + url + ": " + inputLine);
+            }
+            in.close();
+        } catch (IOException e) {
+            System.out.println("Error crawling " + url);
+        }
+    }
+
+    public static void main(String[] args) {
+        String[] websites = {
+            "http://example.com",
+            "http://example.org",
+            "http://example.net"
+        };
+        
+        for (String website : websites) {
+            new WebCrawlerThread(website).start();
+        }
+    }
+}
+        </code></pre>
+
+            <h3>7. Write a Java program that creates a bank account with concurrent deposits and withdrawals using threads.</h3>
+            <pre><code>
+class BankAccount {
+    private int balance = 0;
+
+    public synchronized void deposit(int amount) {
+        balance += amount;
+    }
+
+    public synchronized void withdraw(int amount) {
+        if (balance >= amount) {
+            balance -= amount;
+        }
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+}
+
+class TransactionThread extends Thread {
+    private BankAccount account;
+    private boolean isDeposit;
+
+    public TransactionThread(BankAccount account, boolean isDeposit) {
+        this.account = account;
+        this.isDeposit = isDeposit;
+    }
+
+    public void run() {
+        if (isDeposit) {
+            account.deposit(100);
+            System.out.println("Deposited 100. Current balance: " + account.getBalance());
+        } else {
+            account.withdraw(50);
+            System.out.println("Withdrew 50. Current balance: " + account.getBalance());
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        BankAccount account = new BankAccount();
+        TransactionThread depositThread = new TransactionThread(account, true);
+        TransactionThread withdrawThread = new TransactionThread(account, false);
+        depositThread.start();
+        withdrawThread.start();
+        depositThread.join();
+        withdrawThread.join();
+    }
+}
+        </code></pre>
+
+            <h3>8. Create the program to create multiple threads by using Runnable interface.</h3>
+            <pre><code>
+class RunnableTask implements Runnable {
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " is running");
+    }
+
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new RunnableTask());
+        Thread thread2 = new Thread(new RunnableTask());
+        thread1.start();
+        thread2.start();
+    }
+}
+        </code></pre>
+
+            <h3>9. Create the program to create multiple threads by using Thread class.</h3>
+            <pre><code>
+class CustomThread extends Thread {
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " is running");
+    }
+
+    public static void main(String[] args) {
+        CustomThread thread1 = new CustomThread();
+        CustomThread thread2 = new CustomThread();
+        thread1.start();
+        thread2.start();
+    }
+}
+        </code></pre>
+
+            <h3>10. Create the program to create multiple threads, set its name and its priority.</h3>
+            <pre><code>
+class NamedPriorityThread extends Thread {
+    public void run() {
+        System.out.println(getName() + " is running with priority " + getPriority());
+    }
+
+    public static void main(String[] args) {
+        NamedPriorityThread thread1 = new NamedPriorityThread();
+        NamedPriorityThread thread2 = new NamedPriorityThread();
+        
+        thread1.setName("Thread-1");
+        thread2.setName("Thread-2");
+        thread1.setPriority(Thread.MAX_PRIORITY);
+        thread2.setPriority(Thread.MIN_PRIORITY);
+        
+        thread1.start();
+        thread2.start();
+    }
+}
+        </code></pre>
+
+            <h3>11. Create the program to create multiple threads, show an example of the synchronization keyword.</h3>
+            <pre><code>
+class SyncCounter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+class CounterThread extends Thread {
+    private SyncCounter counter;
+
+    public CounterThread(SyncCounter counter) {
+        this.counter = counter;
+    }
+
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            counter.increment();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        SyncCounter counter = new SyncCounter();
+        CounterThread thread1 = new CounterThread(counter);
+        CounterThread thread2 = new CounterThread(counter);
+        
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+        
+        System.out.println("Final count: " + counter.getCount());
+    }
+}
+        </code></pre>
+
+            <h3>12. Create the program to create multiple threads, show an example of notify, notifyAll, wait, resume, and sleep methods.</h3>
+            <pre><code>
+class WaitNotifyExample {
+    public static void main(String[] args) {
+        final Object lock = new Object();
+
+        Thread waiter = new Thread(() -> {
+            synchronized (lock) {
+                try {
+                    System.out.println("Waiting...");
+                    lock.wait();
+                    System.out.println("Resumed!");
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+
+        Thread notifier = new Thread(() -> {
+            synchronized (lock) {
+                try {
+                    Thread.sleep(1000);
+                    System.out.println("Notifying...");
+                    lock.notify();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+
+        waiter.start();
+        notifier.start();
+    }
+}
+        </code></pre>
+
+            <h3>13. Create the program to create multiple threads, show an example of join and yield methods.</h3>
+            <pre><code>
+class YieldExample extends Thread {
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " is executing.");
+        Thread.yield(); // Hinting to the scheduler to allow other threads to execute
+        System.out.println(Thread.currentThread().getName() + " has resumed.");
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        YieldExample thread1 = new YieldExample();
+        YieldExample thread2 = new YieldExample();
+        
+        thread1.start();
+        thread2.start();
+        
+        thread1.join(); // Wait for thread1 to die
+        thread2.join(); // Wait for thread2 to die
+        
+        System.out.println("Both threads have finished execution.");
+    }
+}
+        </code></pre>
+
+    </main>
+</body>
+
+</html>

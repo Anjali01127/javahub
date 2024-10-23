@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input/Output Practice Questions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h2>Java Input/Output Practice Questions</h2>
+    </header>
+    <main>
+        <h2>Input/Output Questions</h2>
+
+        <h3>1. Enter the character from user using InputStreamReader</h3>
+        <pre><code>
+import java.io.*;
+
+public class ReadCharacter {
+    public static void main(String[] args) throws IOException {
+        System.out.print("Enter a character: ");
+        InputStreamReader isr = new InputStreamReader(System.in);
+        char ch = (char) isr.read();
+        System.out.println("You entered: " + ch);
+    }
+}
+        </code></pre>
+
+        <h3>2. Enter the string from user using BufferedReader</h3>
+        <pre><code>
+import java.io.*;
+
+public class ReadString {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter a string: ");
+        String str = br.readLine();
+        System.out.println("You entered: " + str);
+    }
+}
+        </code></pre>
+
+        <h3>3. Enter the integer from user using Scanner class</h3>
+        <pre><code>
+import java.util.Scanner;
+
+public class ReadInteger {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+        System.out.println("You entered: " + num);
+        scanner.close();
+    }
+}
+        </code></pre>
+
+        <h3>4. Enter the float from user using Scanner class</h3>
+        <pre><code>
+import java.util.Scanner;
+
+public class ReadFloat {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a float: ");
+        float num = scanner.nextFloat();
+        System.out.println("You entered: " + num);
+        scanner.close();
+    }
+}
+        </code></pre>
+
+        <h3>5. Enter the double from user using Scanner class</h3>
+        <pre><code>
+import java.util.Scanner;
+
+public class ReadDouble {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a double: ");
+        double num = scanner.nextDouble();
+        System.out.println("You entered: " + num);
+        scanner.close();
+    }
+}
+        </code></pre>
+
+        <h3>6. Enter the boolean from user using Scanner class</h3>
+        <pre><code>
+import java.util.Scanner;
+
+public class ReadBoolean {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a boolean value (true/false): ");
+        boolean bool = scanner.nextBoolean();
+        System.out.println("You entered: " + bool);
+        scanner.close();
+    }
+}
+        </code></pre>
+
+        <h3>7. Enter the short integer from user using Scanner class</h3>
+        <pre><code>
+import java.util.Scanner;
+
+public class ReadShort {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a short integer: ");
+        short num = scanner.nextShort();
+        System.out.println("You entered: " + num);
+        scanner.close();
+    }
+}
+        </code></pre>
+
+        <h3>8. Enter the long integer from user using Scanner class</h3>
+        <pre><code>
+import java.util.Scanner;
+
+public class ReadLong {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a long integer: ");
+        long num = scanner.nextLong();
+        System.out.println("You entered: " + num);
+        scanner.close();
+    }
+}
+        </code></pre>
+
+        <h3>9. Get all characters from the file and display on the screen</h3>
+        <pre><code>
+import java.io.*;
+
+public class ReadFile {
+    public static void main(String[] args) throws IOException {
+        FileReader fr = new FileReader("input.txt");
+        int ch;
+        while ((ch = fr.read()) != -1) {
+            System.out.print((char) ch);
+        }
+        fr.close();
+    }
+}
+        </code></pre>
+
+        <h3>10. Get all characters from the file, count number of lines, words, characters and display on the screen</h3>
+        <pre><code>
+import java.io.*;
+
+public class FileStats {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("input.txt"));
+        String line;
+        int lineCount = 0, wordCount = 0, charCount = 0;
+
+        while ((line = br.readLine()) != null) {
+            lineCount++;
+            charCount += line.length();
+            wordCount += line.split("\\s+").length;
+        }
+
+        System.out.println("Lines: " + lineCount);
+        System.out.println("Words: " + wordCount);
+        System.out.println("Characters: " + charCount);
+        br.close();
+    }
+}
+        </code></pre>
+
+    </main>
+
+</body>
+
+</html>
